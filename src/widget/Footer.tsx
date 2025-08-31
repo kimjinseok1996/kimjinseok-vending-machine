@@ -38,6 +38,7 @@ function Footer() {
 
   const handleGetDrink = () => {
     const mainText = `음료가 나왔습니다.`;
+    const cardText = paymentType === "card" ? "\n카드를 가져가 주세요." : "";
     const paymentText = `결제타입: ${paymentType === "cash" ? "현금" : "카드"}`;
     const drinkText = `음료가격: ${choiceDrink?.price.toLocaleString()}`;
     const cashText = currentCash
@@ -56,7 +57,7 @@ function Footer() {
       }
     };
 
-    const alertText = `${mainText}\n${paymentText}\n\n${drinkText}\n${cashText}\n${changeText()}`;
+    const alertText = `${mainText}${cardText}\n\n${paymentText}\n${drinkText}\n${cashText}\n${changeText()}`;
 
     alert(alertText);
     setDownDrinkCount(choiceDrink?.name || "");

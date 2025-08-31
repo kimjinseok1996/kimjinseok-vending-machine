@@ -1,17 +1,17 @@
 import { motion } from "framer-motion";
 import type { ReactNode } from "react";
 
-type FramerMotionValues = {
+interface FramerMotionValues {
   _uniqueKey: string | number;
   _initial?: any;
   _animate?: any;
   _transition?: any;
-};
+}
 
-type FramerMotionProps = {
+interface FramerMotionProps {
   children: ReactNode;
   values: FramerMotionValues;
-};
+}
 
 const FramerMotion = ({ children, values }: FramerMotionProps) => {
   const { _uniqueKey, _initial, _animate, _transition } = values;
