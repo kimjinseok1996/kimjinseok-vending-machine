@@ -1,7 +1,7 @@
-import "../style/footer.scss";
+import "../style/bottomInfo.scss";
 import useChoiceDrinksStore from "../store/useChoiceDrinksStore";
 import usePaymentStore from "../store/usePaymentStore";
-import useAllReset from "../hooks/useReset";
+import { useNavigate } from "react-router-dom";
 
 const primaryColorStyyle = {
   color: "var(--primary-color)",
@@ -12,8 +12,8 @@ const paymentTypeOptions = {
   card: "카드",
 };
 
-function Footer() {
-  const { getDrinkReset } = useAllReset();
+function BottomInfo() {
+  const navigate = useNavigate();
   const { drinks, setDownDrinkCount } = useChoiceDrinksStore();
   const { currentCash, paymentType, isCardInserted } = usePaymentStore();
 
@@ -22,46 +22,20 @@ function Footer() {
   const isBtnDisabled = () => {
     if (!choiceDrink) return true;
     if (choiceDrink.stock <= 0) return true;
-
     if (paymentType === "cash") {
       if (currentCash >= (choiceDrink?.price ?? 0)) {
         return false;
       }
     }
-
     if (paymentType === "card") {
       if (isCardInserted === true) return false;
     }
-
     return true;
   };
 
   const handleGetDrink = () => {
-    const mainText = `음료가 나왔습니다.`;
-    const cardText = paymentType === "card" ? "\n카드를 가져가 주세요." : "";
-    const paymentText = `결제타입: ${paymentType === "cash" ? "현금" : "카드"}`;
-    const drinkText = `음료가격: ${choiceDrink?.price.toLocaleString()}`;
-    const cashText = currentCash
-      ? `투입현금: ${currentCash.toLocaleString()}원`
-      : "";
-    const changeText = () => {
-      if (paymentType === "cash") {
-        const change = (currentCash ?? 0) - (choiceDrink?.price ?? 0);
-        return `거스름돈: ${change.toLocaleString()}원`;
-      }
-      if (paymentType === "card") {
-        if (currentCash) {
-          return `거스름돈: ${currentCash.toLocaleString()}원`;
-        }
-        return "";
-      }
-    };
-
-    const alertText = `${mainText}${cardText}\n\n${paymentText}\n${drinkText}\n${cashText}\n${changeText()}`;
-
-    alert(alertText);
     setDownDrinkCount(choiceDrink?.name || "");
-    getDrinkReset();
+    navigate("/success");
   };
 
   const drinkInfo = [
@@ -79,7 +53,7 @@ function Footer() {
   ];
 
   return (
-    <footer>
+    <div id="bottom-info">
       <div className="container">
         <div className="drink-info">
           {drinkInfo.map((info) => (
@@ -99,12 +73,12 @@ function Footer() {
             disabled={isBtnDisabled()}
             onClick={handleGetDrink}
           >
-            음료 배출
+            구매 하기
           </button>
         </div>
       </div>
-    </footer>
+    </div>
   );
 }
 
-export default Footer;
+export default BottomInfo;

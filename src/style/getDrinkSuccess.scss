@@ -1,0 +1,42 @@
+#get-drink-success {
+  padding-top: 16vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  h2 {
+    font-weight: 500;
+    font-size: 28px;
+    margin-bottom: 8px;
+  }
+
+  h5 {
+    font-weight: 400;
+    font-size: 20px;
+    color: var(--secondary-color);
+  }
+
+  table {
+    margin: 48px 0;
+
+    th,
+    td {
+      padding: 6px 4px;
+    }
+
+    th {
+      font-weight: 500;
+      text-align: left;
+      min-width: 112px;
+    }
+
+    td {
+      text-align: right;
+      span {
+        color: var(--primary-color);
+      }
+    }
+  }
+}
