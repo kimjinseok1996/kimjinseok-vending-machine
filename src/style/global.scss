@@ -1,0 +1,105 @@
+@import url("https://cdn.jsdelivr.net/npm/pretendard/dist/web/static/pretendard-subset.css");
+
+:root {
+  --primary-color: #4880ee;
+  --gray-color: #dadada;
+  --light-gray-color: #f2f4f6;
+  --secondary-color: #6d7582;
+  --red-color: #e84118;
+  --subtitle-color : #8D94A0
+  --text-primary: #353C49;
+  --mobile-size: 768px
+}
+
+* { 
+  font-family: "Pretendard";
+  font-display: swap;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 18px;
+  word-break: break-all;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  background-color: #fff;
+  height: 100%;
+
+}
+
+.container{
+  max-width: var(--mobile-size);
+  margin: 0 auto;
+  overflow-x: hidden;
+  height: 100%;
+  padding: 0 16px;
+}
+
+img {
+  width: 100%;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+
+  li {
+    list-style: none;
+  }
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+label{
+  cursor: pointer;
+}
+
+input {
+  outline: none;
+  border: none;
+}
+
+button{
+  cursor: pointer;
+  outline: none;
+  border: none;
+  border-radius: 8px;
+  transition: 0.2s;
+  background-color: transparent;
+  padding: 8px 12px;
+
+  svg{
+    font-size: 24px;
+  }
+
+  &:hover{
+    opacity: 0.9;
+  }
+
+  &.primary-btn{
+    background-color: var(--primary-color);
+    color: #fff;
+  }
+
+  &.secondary-btn{
+    background-color: var(--light-gray-color);
+    color: var(--secondary-color);
+  }
+
+   &.danger-btn{
+    background-color: var(--red-color);
+    color: var(--light-gray-color);
+  }
+
+  &:disabled{
+     background-color: var(--gray-color);
+    color: var(--light-gray-color);
+    pointer-events: none;
+  }
+}

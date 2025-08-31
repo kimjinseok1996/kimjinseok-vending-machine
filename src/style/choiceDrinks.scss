@@ -1,0 +1,51 @@
+#choice-drinks {
+  h2 {
+    margin-bottom: 32px;
+    font-weight: 500;
+  }
+  .wrap {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+
+    button {
+      width: 100%;
+      font-size: 16px;
+      border: 3px solid #ccc;
+      padding: 16px 0;
+
+      .icon {
+        margin-bottom: 24px;
+        svg {
+          font-size: 62px;
+          color: #333;
+        }
+      }
+
+      p {
+        margin-bottom: 8px;
+
+        &:nth-child(2) {
+          font-weight: 600;
+          color: var(--primary-color);
+        }
+
+        &:nth-child(4) {
+          color: var(--secondary-color);
+          margin-bottom: 0;
+        }
+      }
+
+      &:hover,
+      &.choice {
+        border-color: var(--primary-color);
+      }
+
+      &:disabled {
+        p {
+          color: var(--secondary-color);
+        }
+      }
+    }
+  }
+}
